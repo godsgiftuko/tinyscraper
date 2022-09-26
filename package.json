@@ -4,7 +4,7 @@
   "description": "A simple Tiny og scraper",
   "main": "index.js",
   "repository": "https://github.com/godsgiftuko/tinyscraper.git",
-  "author": "Uko, God'sgift Matthew",
+  "author": "Uko, God'sgift Matthew <godsgiftuko@gmail.com> (https://twitter.com/godsgiftuko)",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon src/app",
