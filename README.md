@@ -1,5 +1,6 @@
-# A simple OG scraper
+# Tiny Scraper
 
+A simple OG scraper \
 ![The Open Graph protocol](https://ogp.me/logo.png)
 
 This project was created with [The Open Graph protocol](https://ogp.me/), [axios](https://www.npmjs.com/package/axios) & [cheerio](https://www.npmjs.com/package/cheerio) packages.

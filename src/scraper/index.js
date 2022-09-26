@@ -7,6 +7,13 @@ module.exports = class TinyScraper extends EventEmitter {
     constructor(url, timeout = 2000) {
         super();
         this.url = url;
+
+        if (timeout.constructor === String) {
+            if (!parseInt(timeout.match(/\d+/))) {
+                this.timeout = 2000;
+            }
+
+        }
         this.timeout = timeout;
 
         this.init()
@@ -26,17 +33,19 @@ module.exports = class TinyScraper extends EventEmitter {
 
             const data = await this.fetchPage();
             if (data) {
-                payload = await this.parsePage(data);
-            }
-            
-            setTimeout(() => {
-                if (payload) {
-                    payload = JSON.parse(payload);
+                const stringifiedData = await this.parsePage(data);
+
+                if (stringifiedData) {
+                    payload = JSON.parse(stringifiedData);
                     this.emit('scrapeSuccess', {
                         message: 'JSON Data received:',
                         data: payload
                     });
+                    process.exit();
                 }
+            }
+            
+            setTimeout(() => {
                 this.emit('timeout', payload ? 'Scraping timed out' : 'Stopping scraper');
                 process.exit();
             }, this.timeout);
@@ -59,6 +68,7 @@ module.exports = class TinyScraper extends EventEmitter {
             this.emit('error', {
                 error,
             });
+            process.exit();
         }
     }
 

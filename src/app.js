@@ -1,8 +1,9 @@
 const TinyScraper = require('./scraper');
-const scraper = new TinyScraper('https://raw.githubusercontent.com/godsgiftuko/simple-og/main/index.html');
+
+const [ url, timeout ] = process.argv.slice(2);
+const scraper = new TinyScraper(url, timeout);
 
 scraper.on('scrapeSuccess', (data) => {
-    // const toHashMap = JSON.parse(data);
     console.log(data);
 });
 
