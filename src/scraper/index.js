@@ -8,21 +8,27 @@ module.exports = class TinyScraper extends EventEmitter {
         super();
         this.url = url;
         this.timeout = timeout;
-        
+
         this.init()
-        .then((data) => {})
+        .then(() => {})
         .catch((e) => e);
     }
 
     async init() {
         try {
             let payload;
-            
+     
+            if (!this.url.trim()) {
+                throw {
+                    error: 'No url'
+                }
+            }
+
             const data = await this.fetchPage();
             if (data) {
                 payload = await this.parsePage(data);
             }
-
+            
             setTimeout(() => {
                 if (payload) {
                     payload = JSON.parse(payload);
@@ -35,21 +41,23 @@ module.exports = class TinyScraper extends EventEmitter {
                 process.exit();
             }, this.timeout);
         } catch (error) {
+            console.log(error);
             throw error;
         }
     }
 
     async fetchPage() {
         try {
+            this.emit('scrapeStarted', CONSTANTS.newLine + `Fetching: ${this.url}` + CONSTANTS.newLine );
             const res = (await axios.get(this.url));
             return res.data;
-        } catch (error) {
-            let message;
-            if (error.response.status === CONSTANTS.ErrorCodes.notFound) {
-                message = 'The URL is not valid.';
+        } catch (e) {
+            let error;
+            if (e.response.status === CONSTANTS.ErrorCodes.notFound) {
+                error = 'The URL is not valid.';
             }
             this.emit('error', {
-                message,
+                error,
             });
         }
     }
