@@ -1,4 +1,4 @@
-# A simple Tiny og scraper
+# A simple OG scraper
 
 ![The Open Graph protocol](https://ogp.me/logo.png)
 
@@ -12,7 +12,7 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-You may also see any errors in the console.
+You will get the OG data in the console as well any errors.
 
 Author \
 Uko, God'sgift Matthew
