@@ -1,0 +1,21 @@
+{
+  "name": "tinyscraper",
+  "version": "1.0.0",
+  "description": "A simple Tiny og scraper",
+  "main": "index.js",
+  "repository": "https://github.com/godsgiftuko/tinyscraper.git",
+  "author": "Uko, God'sgift Matthew",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/app",
+    "start": "node src/app"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
