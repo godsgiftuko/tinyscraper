@@ -1,6 +1,6 @@
 # Tiny Scraper
 
-A simple OG scraper \
+TinyScraper is an harvesting or extraction tool for extracting Open Graph data from websites.\
 ![The Open Graph protocol](https://ogp.me/logo.png)
 
 This project was created with [The Open Graph protocol](https://ogp.me/), [axios](https://www.npmjs.com/package/axios) & [cheerio](https://www.npmjs.com/package/cheerio) packages.
